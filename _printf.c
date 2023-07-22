@@ -10,5 +10,6 @@ int _printf(const char *format, ...)
 	int a;
 
 	a = strlen(format);
+	write(1, format, a);
 	return (a);
 }
