@@ -23,10 +23,6 @@ int _printf(const char *format, ...)
 				case 's':
 					printstring(va_arg(arg, char *));
 					break;
-				case 'd':
-				case 'i':
-					printint(va_arg(arg, int));
-					break;
 				default:
 					write(1, &format[i], 1);
 			}
