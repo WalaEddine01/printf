@@ -6,7 +6,7 @@
 */
 void printchar(int a)
 {
-write(1, &a, 1);
+	write(1, &a, 1);
 }
 /**
  * printstring - prints a a string
@@ -15,7 +15,7 @@ write(1, &a, 1);
 */
 void printstring(char *s)
 {
-write(1, s, strlen(s));
+	write(1, s, strlen(s));
 }
 /**
  * printint - prints an int
@@ -24,27 +24,24 @@ write(1, s, strlen(s));
 */
 void printint(int a)
 {
-char num_string[20];
-int i = 0;
-int j;
-if (a < 0)
-{
-write(1, "-", 1);
-a *= -1;
-i++;
-}
-while (a != 0)
-{
-num_string[i] = '0' + (a % 10);
-a /= 10;
-i++;
-}
-for (j = i - 1; j >= 0; j--)
-{
-write(1, &num_string[j], 1);
-}
-}
+	char num_string[20];
+	int i = 0;
+	int j;
 
-
-
-
+	if (a < 0)
+	{
+		write(1, "-", 1);
+		a *= -1;
+		i++;
+	}
+	while (a != 0)
+	{
+		num_string[i] = '0' + (a % 10);
+		a /= 10;
+		i++;
+	}
+	for (j = i - 1; j >= 0; j--)
+	{
+		write(1, &num_string[j], 1);
+	}
+}
