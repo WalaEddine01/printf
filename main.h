@@ -10,5 +10,9 @@
 #include <unistd.h>
 
 int _printf(const char *format, ...);
+void printchar(int a);
+void printstring(char *s);
+void printint(int a);
+void printfloat(double b);
 
 #endif /*MAIN_H*/

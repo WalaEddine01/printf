@@ -3,18 +3,14 @@
  * _printf - prints Anything
  * @format: list of args types passed to the function
  * Return: the number of charaters printed
- * Description: this function prints anything
  */
 int _printf(const char *format, ...)
 {
-	int a, b, i;
+	int a = strlen(format), i = 0;
 	va_list arg;
-	char *s;
 
-	i = 0;
-	a = strlen(format);
 	va_start(arg, format);
-	while(format && format[i])
+	while (format && format[i])
 	{
 		if (format[i] == '%')
 		{
@@ -22,19 +18,23 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case 'c':
-					b = va_arg(arg, int);
-					write(1, &b, 1);
+					printchar(va_arg(arg, int));
 					break;
 				case 's':
-					s = va_arg(arg, char *);
-					write(1, s, strlen(s));
+					printstring(va_arg(arg, char *));
 					break;
 				case '%':
 					write(1, &format[i], 1);
 					break;
+				case 'd':
+				case 'i':
+					printint(va_arg(arg, int));
+					break;
+				case 'f':
+					/*printfloat(va_arg(arg, double));*/
+					break;
 				default:
-					i++;
-					continue;
+					write(1, &format[i], 1);
 			}
 			i++;
 		}
