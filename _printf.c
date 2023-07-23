@@ -30,9 +30,6 @@ int _printf(const char *format, ...)
 				case 'i':
 					printint(va_arg(arg, int));
 					break;
-				case 'f':
-					/*printfloat(va_arg(arg, double));*/
-					break;
 				default:
 					write(1, &format[i], 1);
 			}

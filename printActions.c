@@ -6,7 +6,8 @@
 */
 void printchar(int a)
 {
-	write(1, &a, 1);
+	if (a)
+		write(1, &a, 1);
 }
 /**
  * printstring - prints a a string
@@ -15,7 +16,8 @@ void printchar(int a)
 */
 void printstring(char *s)
 {
-	write(1, s, strlen(s));
+	if(s)
+		write(1, s, strlen(s));
 }
 /**
  * printint - prints an int
@@ -33,7 +35,7 @@ void printint(int a)
 		write(1, max, sizeof(max) - 1);
 		return;
 	}
-	if (a == INT_MAX)
+	if (a == INT_MIN)
 	{
 		write(1, min, sizeof(min) - 1);
 		return;
@@ -99,12 +101,3 @@ void printint(int a)
 		return;
 	}
 }
-/**
- * printfloat - prints a float number
- * @b: float to print
- * Return: void
-*/
-/*void printfloat(double b)
-{
-	return;
-}*/
