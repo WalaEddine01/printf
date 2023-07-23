@@ -25,9 +25,13 @@ void printstring(char *s)
 void printint(int a)
 {
 	char num_string[20];
-	int i = 0;
-	int j;
+	int i = 0, j;
 
+	if (a == 0)
+	{
+		write(1, "0", 1);
+		return;
+	}
 	if (a < 0)
 	{
 		write(1, "-", 1);
