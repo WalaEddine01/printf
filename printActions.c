@@ -6,6 +6,11 @@
 */
 void printchar(int a)
 {
+	if (a == 0)
+	{
+		write(1, "", 1);
+		return;
+	}
 	write(1, &a, 1);
 }
 /**
@@ -15,13 +20,18 @@ void printchar(int a)
 */
 void printstring(char *s)
 {
+	if (s == 0)
+	{
+		write(1, "(null)", 6);
+		return;
+	}
 	write(1, s, strlen(s));
 }
 /**
  * printint - prints an int
  * @a: int to print
  * Return: void
-*/
+ */
 void printint(int a)
 {
 	char num_string[20];
