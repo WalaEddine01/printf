@@ -24,7 +24,7 @@ void printstring(char *s)
 */
 void printint(int a)
 {
-	char num_string[20];
+	char num_string[10];
 	int i = 0;
 	int j;
 
