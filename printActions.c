@@ -25,14 +25,14 @@ void printstring(char *s)
 		write(1, "(null)", 6);
 		return;
 	}
-	write(1, s, strlen(s));
+	write(1, s, _strlen(s));
 }
 /**
  * printint - prints an int
  * @a: int to print
  * Return: void
  */
-void printint(int a)
+int printint(int a)
 {
 	char num_string[10];
 	int i = 0;
@@ -41,7 +41,7 @@ void printint(int a)
 	if (a == 0)
 	{
 		write(1, "0", 1);
-		return;
+		return (1);
 	}
 	if (a < 0)
 	{
@@ -59,4 +59,5 @@ void printint(int a)
 	{
 		write(1, &num_string[j], 1);
 	}
+	return (i);
 }
