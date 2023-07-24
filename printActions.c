@@ -4,28 +4,30 @@
  * @a: character to print
  * Return: void
 */
-void printchar(int a)
+int printchar(int a)
 {
-	if (a == 0)
+	if (a)
 	{
-		write(1, "", 1);
-		return;
+		write(1, &a, 1);
+		return (1);
 	}
-	write(1, &a, 1);
+	else
+		return (0);
 }
 /**
  * printstring - prints a a string
  * @s: string to print
  * Return: void
 */
-void printstring(char *s)
+int printstring(char *s)
 {
 	if (s == 0)
 	{
 		write(1, "(null)", 6);
-		return;
+		return (6);
 	}
 	write(1, s, _strlen(s));
+	return (_strlen(s));
 }
 /**
  * printint - prints an int
@@ -41,7 +43,7 @@ int printint(int a)
 	if (a == 0)
 	{
 		write(1, "0", 1);
-		return (1);
+		return (0);
 	}
 	if (a < 0)
 	{
@@ -59,5 +61,5 @@ int printint(int a)
 	{
 		write(1, &num_string[j], 1);
 	}
-	return (i);
+	return (a);
 }

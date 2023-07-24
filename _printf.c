@@ -6,44 +6,36 @@
  */
 int _printf(const char *format, ...)
 {
-int i = 0, a = 0;
-char *str;
+	int i = 0, a = _strlen(format);
 	va_list arg;
+
 	va_start(arg, format);
-	
 	while (format && format[i])
 	{
 		if (format[i] == '%')
-		  {
-		        i++;
+		{
+			i++;
 			switch (format[i])
 			{
 				case 'c':
 					printchar(va_arg(arg, int));
-					a++;
 					break;
-			        case 's':
-				        str = va_arg(arg, char*);
-					a = a + _printstr(str);
+				case 's':
+					printstring(va_arg(arg, char *))
 					break;
-					
 				case 'd':
 				case 'i':
-				        a += printint(va_arg(arg, int));
+					printint(va_arg(arg, int));
 					break;
 				default:
-				  printchar('%');
-				  printchar(format[i]);
-				  a = a + 2;
-
+					write(1, &format[i], 1);
 			}
 			i++;
 		}
 		else
 		{
-		  printchar(format[i]);
-		  a++;
-		  i++;
+			write(1, &format[i], 1);
+			i++;
 		}
 	}
 	va_end(arg);
