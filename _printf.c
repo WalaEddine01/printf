@@ -6,9 +6,9 @@
  */
 int _printf(const char *format, ...)
 {
-  /*int a = _strlen(format), i = 0;*/ 
-  int i = 0;
-  int a = 0;
+ 
+        int i = 0;
+        int a = 0;
         char *str;
 	va_list arg;
 
@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-		  i++;
+		        i++;
 			switch (format[i])
 			{
 				case 'c':
@@ -25,33 +25,24 @@ int _printf(const char *format, ...)
 					a++;
 					break;
 				case 's':
-				  /*printstring(va_arg(arg, char *));*/
 				        str = va_arg(arg, char*);
 					a = a + _strlen(str);
 					write(1, str, _strlen(str));
 					break;
-					/*case '%':
-					write(1, &format[i], 1);
-					break;*/
-
 				case 'd':
 				case 'i':
-				  /*printint(va_arg(arg, int));*/
 				        a += printint(va_arg(arg, int));
 					break;
 				default:
 				  printchar('%');
 				  printchar(format[i]);
 				  a = a + 2;
-				  /*write(1, &format[i], 1);*/
+
 			}
 			i++;
 		}
 		else
 		{
-		  /*write(1, &format[i], 1);
-		    i++;*/
-		  
 		  printchar(format[i]);
 		  a++;
 		  i++;
