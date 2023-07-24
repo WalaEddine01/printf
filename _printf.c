@@ -6,7 +6,8 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, a = _strlen(format);
+	int i = 0;
+	int a = _strlen(format);
 	va_list arg;
 
 	va_start(arg, format);
@@ -17,11 +18,14 @@ int _printf(const char *format, ...)
 			i++;
 			switch (format[i])
 			{
+				case '%':
+					write(1, &format[i], 1);
+					break;
 				case 'c':
 					printchar(va_arg(arg, int));
 					break;
 				case 's':
-					printstring(va_arg(arg, char *))
+					printstring(va_arg(arg, char *));
 					break;
 				case 'd':
 				case 'i':
