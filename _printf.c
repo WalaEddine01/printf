@@ -17,31 +17,38 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == '\0' || (format[i] != 'c' && format[i] != 's'
-		&& format[i] != '%' && format[i] != 'd' && format[i] != 'i'))
+			if (format[i] == '\0')
+			{
+				a = a + printchar('%');
+				break;
+			}
+			else if (format[i] != 'c' && format[i] != 's'
+		&& format[i] != '%' && format[i] != 'd' && format[i] != 'i')
 				{
 				a = a + printchar('%');
-				continue;
-				return (-1);
+				a = a + printchar(format[i]);
 				}
-			switch (format[i])
+			else
 			{
-				case '%':
-					a = a + printchar('%');
-					break;
-				case 'c':
-					a = a + printchar(va_arg(arg, int));
-					break;
-				case 's':
-					a = a + printstring(va_arg(arg, char *));
-					break;
-				case 'd':
-				case 'i':
-					a = a + printint(va_arg(arg, int));
-					break;
-				default:
-					a = a + printchar(format[i]);
-					break;
+				switch (format[i])
+				{
+					case '%':
+						a = a + printchar('%');
+						break;
+					case 'c':
+						a = a + printchar(va_arg(arg, int));
+						break;
+					case 's':
+						a = a + printstring(va_arg(arg, char *));
+						break;
+					case 'd':
+					case 'i':
+						a = a + printint(va_arg(arg, int));
+						break;
+					default:
+						a = a + printchar(format[i]);
+						break;
+				}
 			}
 		}
 		else
