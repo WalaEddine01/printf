@@ -47,6 +47,11 @@ int printint(int a)
 		write(1, "-2147483648", 11);
 		return (11);
 	}
+	if (a == INT_MAX)
+	{
+		write(1, "2147483647", 10);
+		return (10);
+	}
 	if (a == 0)
 	{
 		write(1, "0", 1);
