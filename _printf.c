@@ -17,6 +17,9 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
+			if (format[i] == '\0' || (format[i] != 'c' && format[i] != 's'
+		&& format[i] != '%' && format[i] != 'd' && format[i] != 'i'))
+				return (-1);
 			switch (format[i])
 			{
 				case '%':
