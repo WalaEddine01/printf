@@ -24,7 +24,7 @@ int printchar(int a)
 */
 int printstring(char *s)
 {
-	if (s == 0)
+	if (s == NULL)
 	{
 		write(1, "(null)", 6);
 		return (6);
