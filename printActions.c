@@ -12,7 +12,10 @@ int printchar(int a)
 		return (1);
 	}
 	else
-		return (0);
+	{
+		write(1, "\0", 1);
+		return (-1);
+	}
 }
 /**
  * printstring - prints a a string
@@ -36,20 +39,28 @@ int printstring(char *s)
  */
 int printint(int a)
 {
-	char num_string[10];
-	int i = 0;
-	int j;
+	char num_string[11];
+	int i = 0, j;
 
+	if (a == INT_MIN)
+	{
+		write(1, "-2147483648", 11);
+		return (11);
+	}
+	if (a == INT_MAX)
+	{
+		write(1, "2147483647", 10);
+		return (10);
+	}
 	if (a == 0)
 	{
 		write(1, "0", 1);
-		return (0);
+		return (1);
 	}
 	if (a < 0)
 	{
 		write(1, "-", 1);
 		a *= -1;
-		i++;
 	}
 	while (a != 0)
 	{
@@ -61,5 +72,5 @@ int printint(int a)
 	{
 		write(1, &num_string[j], 1);
 	}
-	return (a);
+	return (i);
 }

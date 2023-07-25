@@ -6,11 +6,12 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0;
-	int a = _strlen(format);
+	int i = 0, a = 0;
 	va_list arg;
 
 	va_start(arg, format);
+	if (format == NULL)
+		return (-1);
 	while (format && format[i])
 	{
 		if (format[i] == '%')
@@ -19,28 +20,29 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case '%':
-					write(1, &format[i], 1);
+					a = a + printchar('%');
 					break;
 				case 'c':
-					printchar(va_arg(arg, int));
+					a = a + printchar(va_arg(arg, int));
 					break;
 				case 's':
-					printstring(va_arg(arg, char *));
+					a = a + printstring(va_arg(arg, char *));
 					break;
 				case 'd':
 				case 'i':
-					printint(va_arg(arg, int));
+					a = a + printint(va_arg(arg, int));
 					break;
 				default:
-					write(1, &format[i], 1);
+					a = a + printchar(format[i]);
+					break;
 			}
-			i++;
 		}
 		else
 		{
 			write(1, &format[i], 1);
-			i++;
+			a++;
 		}
+		i++;
 	}
 	va_end(arg);
 	return (a);
