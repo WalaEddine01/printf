@@ -38,10 +38,7 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
-		{
-			write(1, &format[i], 1);
-			a++;
-		}
+			a = a + printchar(format[i]);
 		i++;
 	}
 	va_end(arg);

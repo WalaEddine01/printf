@@ -10,7 +10,6 @@ int _printf(const char *format, ...);
 int printchar(int a);
 int printstring(char *s);
 int printint(int a);
-void printfloat(double b);
 int _strlen(const char *s);
 
 #endif /*MAIN_H*/
