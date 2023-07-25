@@ -39,18 +39,13 @@ int printstring(char *s)
  */
 int printint(int a)
 {
-	char num_string[11];
+	char num_string[12];
 	int i = 0, j;
 
 	if (a == INT_MIN)
 	{
 		write(1, "-2147483648", 11);
 		return (11);
-	}
-	if (a == INT_MAX)
-	{
-		write(1, "2147483647", 10);
-		return (10);
 	}
 	if (a == 0)
 	{
@@ -68,6 +63,7 @@ int printint(int a)
 		a /= 10;
 		i++;
 	}
+	num_string[i] = '\0';
 	for (j = i - 1; j >= 0; j--)
 	{
 		write(1, &num_string[j], 1);
